@@ -14,7 +14,7 @@ const options = {
 }
 
 
-mongoose.connect('mongodb+srv://root:1og9LkTHOSmn3zeT@cluster0.ligpuzz.mongodb.net/?retryWrites=true&w=majority',options).then((res)=>{
+mongoose.connect(ur,options).then((res)=>{
     console.log("Connected Successfully")
 }).catch((err)=>{
     console.log(err)

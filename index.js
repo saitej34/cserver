@@ -8,9 +8,11 @@ require('./database/connect')
 require('./database/model')
 require('./database/blogstore')
 app.use(require('./routes/route'))
-const port = process.env.port || 4000;
+const port = 5000
 
 console.log(port)
 
 
-app.listen(port)
+app.listen(port,()=>{
+    console.log("Listening")
+})
