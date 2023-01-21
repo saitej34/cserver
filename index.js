@@ -8,11 +8,6 @@ require('./database/connect')
 require('./database/model')
 require('./database/blogstore')
 app.use(require('./routes/route'))
-const port = 5000
 
-console.log(port)
-
-
-app.listen(port,()=>{
-    console.log("Listening")
-})
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
