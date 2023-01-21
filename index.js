@@ -1,10 +1,16 @@
 const express = require('express')
+const dotenv = require('dotenv')
 const app = express();
-const port = 9000
+const cors = require('cors')
+app.use(cors({origin: '*'}))
+app.use(express.json());
+require('./database/connect')
+require('./database/model')
+require('./database/blogstore')
+app.use(require('./routes/route'))
+const port = process.env.port || 4000;
 
-app.use('/',(req,res)=>{
-    res.json({"message":"Hello"})
-})
-app.listen(9000,()=>{
-    console.log('listening on port')
-})
+console.log(port)
+
+
+app.listen(port)
