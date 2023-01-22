@@ -268,4 +268,14 @@ router.get('/profile/:id',(req,res)=>{
      })
 })
 
+router.get('/getusers',(req,res)=>{
+   const ex = model.find({},(err,data)=>{
+       if(err)
+       {
+          console.log(err);
+       }
+       return res.json(data);
+   })
+})
+
 module.exports = router;
