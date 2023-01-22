@@ -59,13 +59,13 @@ router.post('/register',async(req,res)=>{
       console.log(req.body)
       const exist = await model.find({email});
       console.log(exist)
-      const options = {
+      /*const options = {
         from:"yelagandulasaiteja70@gmail.com",
         to:email,
         subject:name + " Thank you for Registering for us!!!",
         text:"Codefriend.com CODE WANTS TO BE SIMPLE is an initiative to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm."
         
-      }
+      }*/
       if(exist.length>0)
       {
         return res.json({"message":"User already exists"})
@@ -79,13 +79,13 @@ router.post('/register',async(req,res)=>{
             cpassword:cpassword
           })
           await data.save().then((r)=>{
-             sendmail.sendMail(options,(err,res)=>{
+             /*sendmail.sendMail(options,(err,res)=>{
              if(err)
               {
                   console.log(err);
               }
               console.log(res);
-              })
+              })*/
               return res.send({"message":"Registration Successful"})
           })
           .catch((err)=>{
