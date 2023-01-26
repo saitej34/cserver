@@ -30,6 +30,9 @@ const bschema = new mongoose.Schema({
     date:{
         type:String,
         required:true
+    },
+    comments:{
+        type:Array,
     }
 })
 

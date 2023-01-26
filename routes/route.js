@@ -278,4 +278,14 @@ router.get('/getusers',(req,res)=>{
    })
 })
 
+router.put('/comments/:bid',async(req,res)=>{
+    console.log(req.params.bid);
+    req.body.comments.push("Excellent");
+    console.log(req.body);
+    const d = bmodel.findOneAndUpdate({_id: req.body._id},req.body,{new:true},(err,dat)=>{
+      res.send(dat);
+    });
+    
+})
+
 module.exports = router;
