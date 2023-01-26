@@ -281,9 +281,32 @@ router.get('/getusers',(req,res)=>{
 router.put('/comments/:bid',async(req,res)=>{
     console.log(req.params.bid);
     console.log(req.body);
-    const d = bmodel.findOneAndUpdate({_id: req.params.bid},{$set:{comments:req.body.comments}},{new:true},(err,dat)=>{
+    const a = req.body.comments;
+    console.log(a);
+    const exist = bmodel.findById(req.params.bid,(err,data)=>{
+      if(err)
+      {
+          return res.json({"message":"Internal server Error"})
+      }
+      const ff = data.comments;
+      console.log(ff);
+      ff.push(a);
+      console.log(ff);
+      const final = {
+      _id:data._id,
+      userid:data.userid,
+      btitle:data.btitle,
+      keywords:data.keywords,
+      his:data.his,
+      imglinke:data.imglinke,
+      imglinks:data.imglinks,
+      date:data.date,
+      comments:ff
+    }
+     const d = bmodel.findOneAndUpdate({_id: req.params.bid},final,{new:true},(err,dat)=>{
       res.send(dat);
     });
+    })
     
 })
 
