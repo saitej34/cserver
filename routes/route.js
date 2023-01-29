@@ -114,7 +114,7 @@ router.post('/posts',async(req,res)=>{
                 his:his,
                 imglinke:imglinke,
                 imglinks:imglinks,
-                date:Date(new Date().getDate()) 
+                date:Date(Date.now()) 
           })  
           await bm.save().then((d)=>{
                return res.json({"status":"Blog posted Succesfully"})
@@ -129,8 +129,9 @@ router.post('/posts',async(req,res)=>{
 })
 
 router.get('/decode/:tok',async(req,res)=>{
-     const ids = req.params.tok;
-     const dat = await model.findById(ids);
+     console.log(tok);
+     const exist = jwt.verify(req.params.tok,"saiteja");
+     const dat = await model.findById(exist.user.id);
      res.json(dat)
 })
 
