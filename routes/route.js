@@ -131,6 +131,7 @@ router.post('/posts',async(req,res)=>{
 router.get('/decode/:tok',async(req,res)=>{
      const exist = jwt.verify(req.params.tok,"saiteja");
      const dat = await model.findById(exist.user.id);
+     console.log(dat);
      res.json(dat)
 })
 
