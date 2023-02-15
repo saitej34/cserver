@@ -1,9 +1,9 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const app = express();
+app.use(express.json());
 const cors = require('cors')
 app.use(cors({origin:'*'}))
-app.use(express.json());
 require('./database/connect')
 require('./database/model')
 require('./database/blogstore')

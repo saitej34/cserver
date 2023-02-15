@@ -234,10 +234,14 @@ router.get('/public',(req,res)=>{
       const id = req.params.id;
       
 })
+
+
 router.get('/getblogs',async(req,res)=>{
   const bdata = await bmodel.find({});
   return res.json(bdata);
 })
+
+
 router.get('/getpubl',async(req,res)=>{
   const usersno = await model.find({});
   const bdata = await bmodel.find({})
@@ -252,7 +256,7 @@ router.get('/getpubl',async(req,res)=>{
 router.get('/searchblog/:s',async(req,res)=>{
      const sea = req.params.s;
      console.log(req.params.s)
-     const bdata = await bmodel.find({btitle:sea})
+     const bdata = await bmodel.find({$text:{$search:sea}});
      return res.json(bdata);
 })
 
