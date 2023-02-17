@@ -33,6 +33,10 @@ const bschema = new mongoose.Schema({
     },
     comments:{
         type:Array,
+    },
+    like:{
+        type:Number,
+        required:true
     }
 })
 

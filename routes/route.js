@@ -114,7 +114,8 @@ router.post('/posts',async(req,res)=>{
                 his:his,
                 imglinke:imglinke,
                 imglinks:imglinks,
-                date:Date(Date.now()) 
+                date:Date(Date.now()),
+                like:0
           })  
           await bm.save().then((d)=>{
                return res.json({"status":"Blog posted Succesfully"})
