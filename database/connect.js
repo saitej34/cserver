@@ -13,6 +13,7 @@ const options = {
     family: 4 // Use IPv4, skip trying IPv6
 }
 
+mongoose.set('strictQuery', false);
 
 mongoose.connect(ur,options).then((res)=>{
     console.log("Connected Successfully")
