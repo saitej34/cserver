@@ -101,6 +101,14 @@ router.post('/posts',async(req,res)=>{
       console.log(req.body);
       const tk = req.header('token');  
       console.log(tk)
+      var msgtime = ()=>{
+      var date = new Date();
+      var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+      var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+      var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+      time = hours + ":" + minutes + ":" + seconds;
+      return time;
+      }
       const ids = jwt.verify(tk,"saiteja")
       const uid  = ids.user.id;
       let em;
@@ -114,7 +122,7 @@ router.post('/posts',async(req,res)=>{
                 his:his,
                 imglinke:imglinke,
                 imglinks:imglinks,
-                date:Date(Date.now()),
+                date:msgtime(),
                 like:0
           })  
           await bm.save().then((d)=>{
